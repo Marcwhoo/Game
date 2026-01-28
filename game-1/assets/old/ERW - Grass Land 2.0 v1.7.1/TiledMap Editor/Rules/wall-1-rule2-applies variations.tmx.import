@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://cw0pes3k38ms6"
+path="res://.godot/imported/wall-1-rule2-applies variations.tmx-6b55544e2758a586dd0f94e0b50e6373.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Grass Land 2.0 v1.7.1/TiledMap Editor/Rules/wall-1-rule2-applies variations.tmx"
+dest_files=["res://.godot/imported/wall-1-rule2-applies variations.tmx-6b55544e2758a586dd0f94e0b50e6373.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

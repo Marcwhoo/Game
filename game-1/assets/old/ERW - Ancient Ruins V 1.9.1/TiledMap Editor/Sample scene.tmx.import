@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://bu13bxigxkb3l"
+path="res://.godot/imported/Sample scene.tmx-84a99dec5317fc8df2411ef9014806a6.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Sample scene.tmx"
+dest_files=["res://.godot/imported/Sample scene.tmx-84a99dec5317fc8df2411ef9014806a6.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

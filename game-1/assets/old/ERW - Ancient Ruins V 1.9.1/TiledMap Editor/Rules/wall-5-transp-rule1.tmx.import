@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://b2i7q2dqwqtbk"
+path="res://.godot/imported/wall-5-transp-rule1.tmx-d2cf15722d3a52f0c45994ced3e37a2a.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Rules/wall-5-transp-rule1.tmx"
+dest_files=["res://.godot/imported/wall-5-transp-rule1.tmx-d2cf15722d3a52f0c45994ced3e37a2a.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

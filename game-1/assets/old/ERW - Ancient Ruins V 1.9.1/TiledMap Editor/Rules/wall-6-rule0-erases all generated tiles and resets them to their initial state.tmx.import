@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://gbdyq1o3yk8s"
+path="res://.godot/imported/wall-6-rule0-erases all generated tiles and resets them to their initial state.tmx-bc8250b72d6735606f307cba31bfb4c5.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Rules/wall-6-rule0-erases all generated tiles and resets them to their initial state.tmx"
+dest_files=["res://.godot/imported/wall-6-rule0-erases all generated tiles and resets them to their initial state.tmx-bc8250b72d6735606f307cba31bfb4c5.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

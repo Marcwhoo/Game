@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://bfycijlggqc4p"
+path="res://.godot/imported/wall-1-transparency-rule2-applies variations.tmx-d7f77080ccbba2bba249dd711c3c20c5.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Grass Land 2.0 v1.7.1/TiledMap Editor/Rules/wall-1-transparency-rule2-applies variations.tmx"
+dest_files=["res://.godot/imported/wall-1-transparency-rule2-applies variations.tmx-d7f77080ccbba2bba249dd711c3c20c5.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

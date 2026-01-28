@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://cp7deyxago0ge"
+path="res://.godot/imported/hole-2-rule0-erases all generated tiles and resets them to their initial state.tmx-b8256c9b1ff9a022693b843052bcb727.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Grass Land 2.0 v1.7.1/TiledMap Editor/Rules/hole-2-rule0-erases all generated tiles and resets them to their initial state.tmx"
+dest_files=["res://.godot/imported/hole-2-rule0-erases all generated tiles and resets them to their initial state.tmx-b8256c9b1ff9a022693b843052bcb727.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

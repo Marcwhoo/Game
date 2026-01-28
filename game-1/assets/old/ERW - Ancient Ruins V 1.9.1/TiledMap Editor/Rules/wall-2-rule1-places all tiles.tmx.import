@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://xmvl1dea6hxo"
+path="res://.godot/imported/wall-2-rule1-places all tiles.tmx-2aaa5ad6a5812610a401fef08efee30b.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Rules/wall-2-rule1-places all tiles.tmx"
+dest_files=["res://.godot/imported/wall-2-rule1-places all tiles.tmx-2aaa5ad6a5812610a401fef08efee30b.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

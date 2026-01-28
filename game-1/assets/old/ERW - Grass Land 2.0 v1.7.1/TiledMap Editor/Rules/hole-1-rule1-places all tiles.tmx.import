@@ -1,0 +1,22 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://cwneju3f3se7r"
+path="res://.godot/imported/hole-1-rule1-places all tiles.tmx-f4ab6cd3e1e382fb15331e217f695404.tscn"
+
+[deps]
+
+source_file="res://assets/ERW - Grass Land 2.0 v1.7.1/TiledMap Editor/Rules/hole-1-rule1-places all tiles.tmx"
+dest_files=["res://.godot/imported/hole-1-rule1-places all tiles.tmx-f4ab6cd3e1e382fb15331e217f695404.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""
