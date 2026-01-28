@@ -1,0 +1,7 @@
+# Godot Editor
+Godot*.exe
+*.exe
+
+# OS
+Thumbs.db
+.DS_Store
