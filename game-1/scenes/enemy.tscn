@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://qv3og4mroxg8"]
 
-[ext_resource type="Texture2D" uid="uid://c8w8trqir8ujk" path="res://bear_quadruped_east.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cmkmgtn1ri7yh" path="res://scenes/enemy.gd" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://c27swvs3632j8" path="res://scenes/damage_input_calculation.gd" id="2_dmgin"]
 [ext_resource type="Script" uid="uid://cbym0gjwptcse" path="res://scenes/damage_output_calculation.gd" id="2_dmgout"]
@@ -9,6 +8,46 @@
 [ext_resource type="Texture2D" uid="uid://cfmjmjpau4r5v" path="res://healthbar_enemy_empty.png" id="3_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://drdmk4kd34ox2" path="res://healthbar_enemy_full.png" id="4_c4w8v"]
 [ext_resource type="FontFile" uid="uid://cd7tvhnfkaujp" path="res://pixelfont.tres" id="5_ipns3"]
+[ext_resource type="Texture2D" uid="uid://1by8s8cpsj1o" path="res://Bear walking.png" id="6_ipns3"]
+
+[sub_resource type="Animation" id="Animation_8qclf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BearQuadrupedEast:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w8i8w"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BearQuadrupedEast:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otmr2"]
+_data = {
+&"RESET": SubResource("Animation_8qclf"),
+&"walking": SubResource("Animation_w8i8w")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_8qclf"]
 font = ExtResource("5_ipns3")
@@ -19,6 +58,9 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Bear" type="Node2D" unique_id=1758085221]
 script = ExtResource("1_md0e3")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1698763689]
+libraries/ = SubResource("AnimationLibrary_otmr2")
+
 [node name="DamageInputCalculation" type="Node" parent="." unique_id=1025686756]
 script = ExtResource("2_dmgin")
 
@@ -26,11 +68,12 @@ script = ExtResource("2_dmgin")
 script = ExtResource("2_dmgout")
 
 [node name="FloatingDamage" type="Node2D" parent="." unique_id=1147177304]
-z_index = 3
+z_index = 1
 position = Vector2(-23, -36)
 script = ExtResource("2_float")
 
 [node name="LabelTemplate" type="Label" parent="FloatingDamage" unique_id=989342227]
+visible = false
 offset_left = -35.0
 offset_top = -8.0
 offset_right = 25.0
@@ -44,16 +87,16 @@ vertical_alignment = 1
 
 [node name="BearQuadrupedEast" type="Sprite2D" parent="." unique_id=518332263]
 y_sort_enabled = true
-position = Vector2(-4.08, -15.075)
-texture = ExtResource("1_7p1mj")
+position = Vector2(-7, -15)
+texture = ExtResource("6_ipns3")
+hframes = 6
 
 [node name="Control" type="Control" parent="." unique_id=780118936]
 y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = 2.0
 offset_top = 9.0
-offset_right = 42.0
+offset_right = 40.0
 offset_bottom = 49.0
 script = ExtResource("2_enemyui")
 

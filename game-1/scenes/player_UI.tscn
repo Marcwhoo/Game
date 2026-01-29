@@ -75,11 +75,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Healthbar_empty" type="Sprite2D" parent="." unique_id=731911032]
-position = Vector2(10.000004, 274)
+position = Vector2(12.000004, 273)
 rotation = 1.5707964
 texture = ExtResource("1_31viw")
 
 [node name="Healthbar_full" type="Sprite2D" parent="." unique_id=2006564422]
-position = Vector2(10.000004, 274)
+position = Vector2(12.000004, 273)
 rotation = 1.5707964
 texture = ExtResource("2_jbyw0")

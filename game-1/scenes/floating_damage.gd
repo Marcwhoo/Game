@@ -33,5 +33,5 @@ func show_damage(amount: float) -> void:
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(lbl, "position", end_pos, 1.0)
-	tween.tween_property(lbl, "modulate:a", 0.0, 1.0)
+	tween.tween_property(lbl, "modulate:a", 0.0, 0.2).set_delay(0.8)
 	tween.finished.connect(lbl.queue_free)
