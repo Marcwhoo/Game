@@ -94,6 +94,13 @@ func unregister_occupant(who: Node, cell: Vector2i) -> void:
 func get_occupants_at(cell: Vector2i) -> Array:
 	return occupants.get(cell, []).duplicate()
 
+func get_enemies_at(cell: Vector2i) -> Array:
+	var list: Array = []
+	for node in get_occupants_at(cell):
+		if node.is_in_group("enemy"):
+			list.append(node)
+	return list
+
 func is_cell_empty(cell: Vector2i) -> bool:
 	return get_occupants_at(cell).is_empty()
 	
@@ -142,3 +149,62 @@ func get_cells_in_range(from_cell: Vector2i, min_range: int, max_range: int) -> 
 			if dist >= min_range and dist <= max_range:
 				out.append(c)
 	return out
+
+func _get_neighbors(cell: Vector2i) -> Array[Vector2i]:
+	var bounds := _get_bounds()
+	var out: Array[Vector2i] = []
+	for dx in range(-1, 2):
+		for dy in range(-1, 2):
+			if dx == 0 and dy == 0:
+				continue
+			var c := cell + Vector2i(dx, dy)
+			if c.x < 0 or c.y < 0 or c.x >= bounds.x or c.y >= bounds.y:
+				continue
+			out.append(c)
+	return out
+
+func _path_passable(cell: Vector2i, goal: Vector2i) -> bool:
+	if cell == goal:
+		return true
+	return is_cell_walkable(cell) and is_cell_empty(cell)
+
+func get_cell_path(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
+	if from_cell == to_cell:
+		return []
+	var g_score: Dictionary = {}
+	var f_score: Dictionary = {}
+	var came_from: Dictionary = {}
+	g_score[from_cell] = 0
+	f_score[from_cell] = cell_distance(from_cell, to_cell)
+	var open_list: Array[Vector2i] = [from_cell]
+	while open_list.size() > 0:
+		var current: Vector2i = open_list[0]
+		var best_f: int = f_score.get(current, 0x7FFFFFFF)
+		for c in open_list:
+			var fc: int = f_score.get(c, 0x7FFFFFFF)
+			if fc < best_f:
+				best_f = fc
+				current = c
+		if current == to_cell:
+			var path: Array[Vector2i] = []
+			var cur: Vector2i = current
+			while came_from.has(cur):
+				path.append(cur)
+				cur = came_from[cur]
+			path.reverse()
+			if path.size() > 0:
+				path.resize(path.size() - 1)
+			return path
+		open_list.erase(current)
+		for neighbor in _get_neighbors(current):
+			if not _path_passable(neighbor, to_cell):
+				continue
+			var tentative_g: int = g_score.get(current, 0x7FFFFFFF) + 1
+			if tentative_g >= g_score.get(neighbor, 0x7FFFFFFF):
+				continue
+			came_from[neighbor] = current
+			g_score[neighbor] = tentative_g
+			f_score[neighbor] = tentative_g + cell_distance(neighbor, to_cell)
+			if neighbor not in open_list:
+				open_list.append(neighbor)
+	return []

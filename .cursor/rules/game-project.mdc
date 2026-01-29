@@ -21,7 +21,7 @@ Dieses Projekt ist ein **Godot 4** Spiel: **isometrisches/top-down 2D** mit **ru
 
 ## Grid-System
 
-- **Zellgroesse:** 64x32 px, Fenster 640x360.
+- **Zellgroesse:** 64x32 px. Viewport 640x360; Fenster startet HD (1280x720), skalierbar bis 1440p (2560x1440), min/max in window_setup.gd.
 - **Combat-Grid:** `scenes/combat_grid.gd` an TileMapLayer.
   - Signal `cell_clicked(cell: Vector2i)` bei Klick im Raster.
   - `world_to_cell(global_pos)`, `cell_to_world(cell)` fuer Navigation.

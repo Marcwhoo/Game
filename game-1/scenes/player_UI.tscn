@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b3mxiag0a3idp" path="res://HealthBar_empty.png" id="1_31viw"]
 [ext_resource type="Script" uid="uid://dfaut76nbwpyt" path="res://scenes/player_ui.gd" id="1_jbyw0"]
+[ext_resource type="FontFile" uid="uid://cd7tvhnfkaujp" path="res://pixelfont.tres" id="2_font"]
 [ext_resource type="Texture2D" uid="uid://ciifa6knhhfa5" path="res://HealthBar_full.png" id="2_jbyw0"]
 
 [node name="Control" type="Control" unique_id=639162712]
@@ -10,6 +11,68 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_jbyw0")
+
+[node name="ErrorMessageOutline" type="Control" parent="." unique_id=2107830634]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 195.0
+offset_top = 57.0
+offset_right = 445.0
+offset_bottom = 87.0
+
+[node name="OutlineR" type="Label" parent="ErrorMessageOutline" unique_id=1287054285]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 251.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutlineL" type="Label" parent="ErrorMessageOutline" unique_id=825776044]
+layout_mode = 1
+offset_left = -1.0
+offset_right = 249.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutlineD" type="Label" parent="ErrorMessageOutline" unique_id=1265722436]
+layout_mode = 1
+offset_top = 1.0
+offset_right = 250.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutlineU" type="Label" parent="ErrorMessageOutline" unique_id=1983402795]
+layout_mode = 1
+offset_top = -1.0
+offset_right = 250.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ErrorMessage" type="Label" parent="ErrorMessageOutline" unique_id=2119591989]
+layout_mode = 1
+offset_right = 250.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Healthbar_empty" type="Sprite2D" parent="." unique_id=731911032]
 position = Vector2(10.000004, 274)
