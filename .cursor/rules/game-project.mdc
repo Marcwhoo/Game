@@ -1,0 +1,51 @@
+---
+description: Game-Projekt Referenz – Godot 4, isometrisches 2D Turn-Based Combat
+alwaysApply: true
+---
+
+# Game-Projekt Referenz
+
+Dieses Projekt ist ein **Godot 4** Spiel: **isometrisches/top-down 2D** mit **rundenbasiertem Combat** auf einem Gitter.
+
+## Sprache und Code
+
+- **Antworten an den Nutzer:** immer auf Deutsch.
+- **In Scripts/Kommentaren:** keine Umlaute (ae, oe, ue), keine Emojis, Kommentare minimal.
+
+## Projektstruktur (game-1)
+
+- **Hauptszene:** `scenes/desert.tscn` mit `desert_main.gd` (Root: Node2D).
+- **Spieler:** `scenes/player.tscn` + `player.gd` (Node2D, Grid-Bewegung, Health).
+- **Gegner:** `scenes/enemy.tscn` + `enemy.gd` (Node2D, gleiche Grid-Logik wie Player).
+- **Player-UI:** `scenes/player_UI.tscn` + `player_ui.gd` (Control, Healthbar).
+
+## Grid-System
+
+- **Zellgroesse:** 64x32 px, Fenster 640x360.
+- **Combat-Grid:** `scenes/combat_grid.gd` an TileMapLayer.
+  - Signal `cell_clicked(cell: Vector2i)` bei Klick im Raster.
+  - `world_to_cell(global_pos)`, `cell_to_world(cell)` fuer Navigation.
+  - `occupants: Dictionary` (Zelle -> Liste Nodes), `register_occupant`, `unregister_occupant`, `move_occupant`, `is_cell_empty`, `is_cell_walkable`.
+  - Blockierte Zellen: `blocked_cells` (rot gezeichnet), `silent_blocked_cells` (ohne Visual). `set_cell_walkable(cell, walkable)`, `set_cell_walkable_silent(cell, walkable)`.
+  - Referenz auf Debug-Grid: `@export var debug_grid: TileMapLayer`; in _ready() werden `debug_grid.get_used_cells()` eingelesen – `red_marker_source_id` (Default 0) = rot, andere Source-IDs = still blockiert.
+- **Debug-Grid:** `scenes/debug_grid.gd` an TileMapLayer.
+  - Im Editor: Rasterlinien + Zellnummern, bemalte Zellen = blockiert (rot/weiss je nach Tile-Source).
+  - Zur Laufzeit: `visible = false`, `process_mode = PROCESS_MODE_DISABLED`.
+
+## Bewegung
+
+- **Eine Zelle pro Klick:** In Hauptszene `grid.cell_clicked.connect(player.move_toward_cell)`.
+- In Player/Enemy: `move_toward_cell(cell)` berechnet `step = sign(cell - current)`, prueft `is_cell_walkable(new_cell)` und `is_cell_empty(new_cell)`, setzt `global_position = grid.cell_to_world(new_cell)` und `grid.move_occupant(self, current, new_cell)`.
+
+## Health
+
+- **Player/Enemy:** `max_health: float`, `current_health: float` (Dezimalwerte fuer Damage).
+- **Player-UI:** `@export var player_ui: Control` am Player; Hauptszene setzt `warrior.player_ui = player_ui` und ruft `player_ui.call_deferred("update_health", current_health, max_health)`.
+- **Healthbar:** `update_health(current: float, max_val: float)` – Anzeige per `region_rect` + `offset` (kein Stauchen), unterer Rand bleibt fix.
+
+## Wichtige Pfade
+
+- Combat-Grid-Node in desert.tscn: `combat_grid` (TileMapLayer).
+- Debug-Grid: `debug_grid` (TileMapLayer, Geschwister von combat_grid).
+- Player-Instanz: `Warrior` (player.tscn), Enemy: `Bear` (enemy.tscn).
+- Player-UI-Instanz: `Control` (player_UI.tscn), Geschwister von Warrior – Referenz wird in desert_main._ready() gesetzt.

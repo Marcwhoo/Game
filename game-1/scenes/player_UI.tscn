@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cyyqmtvs3mq7s"]
+
+[ext_resource type="Texture2D" uid="uid://b3mxiag0a3idp" path="res://HealthBar_empty.png" id="1_31viw"]
+[ext_resource type="Script" uid="uid://dfaut76nbwpyt" path="res://scenes/player_ui.gd" id="1_jbyw0"]
+[ext_resource type="Texture2D" uid="uid://ciifa6knhhfa5" path="res://HealthBar_full.png" id="2_jbyw0"]
+
+[node name="Control" type="Control" unique_id=639162712]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jbyw0")
+
+[node name="Healthbar_empty" type="Sprite2D" parent="." unique_id=731911032]
+position = Vector2(10.000004, 274)
+rotation = 1.5707964
+texture = ExtResource("1_31viw")
+
+[node name="Healthbar_full" type="Sprite2D" parent="." unique_id=2006564422]
+position = Vector2(10.000004, 274)
+rotation = 1.5707964
+texture = ExtResource("2_jbyw0")

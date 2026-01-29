@@ -11,15 +11,25 @@ config_version=5
 [application]
 
 config/name="Game-1"
+run/main_scene="uid://bt8xbyn0s8t7a"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+WindowSetup="*res://window_setup.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/initial_position_type=0
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+player="player_node"
 
 [physics]
 
