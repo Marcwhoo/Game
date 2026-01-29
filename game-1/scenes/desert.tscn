@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://drmuo8xish18e" path="res://scenes/player.tscn" id="10_h2jxn"]
 [ext_resource type="PackedScene" uid="uid://cyyqmtvs3mq7s" path="res://scenes/player_UI.tscn" id="11_5jy6c"]
 [ext_resource type="PackedScene" uid="uid://qv3og4mroxg8" path="res://scenes/enemy.tscn" id="12_mn7lg"]
+[ext_resource type="Script" uid="uid://dm1rov65fihba" path="res://scenes/combat_turn_manager.gd" id="13_turn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43ivl"]
 texture = ExtResource("2_4tv1n")
@@ -158,6 +159,9 @@ sources/1 = SubResource("TileSetAtlasSource_5jy6c")
 [node name="Node2D" type="Node2D" unique_id=1538351494]
 y_sort_enabled = true
 script = ExtResource("1_mn7lg")
+
+[node name="CombatTurnManager" type="Node" parent="." unique_id=2110339877]
+script = ExtResource("13_turn")
 
 [node name="sky" type="Sprite2D" parent="." unique_id=137145361]
 y_sort_enabled = true

@@ -3,7 +3,7 @@ extends Node2D
 @export var grid: TileMapLayer
 
 var max_health: float = 5.0
-var current_health: float = 5.0
+var current_health: float = 1.0
 
 func _ready() -> void:
 	if grid:

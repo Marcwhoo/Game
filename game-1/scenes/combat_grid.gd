@@ -115,4 +115,30 @@ func set_cell_walkable_silent(cell: Vector2i, walkable: bool) -> void:
 		silent_blocked_cells[cell] = true
 
 func is_cell_walkable(cell: Vector2i) -> bool:
-	return not blocked_cells.has(cell) and not silent_blocked_cells.has(cell)	
+	return not blocked_cells.has(cell) and not silent_blocked_cells.has(cell)
+
+func _get_bounds() -> Vector2i:
+	var cols := int(WINDOW_SIZE.x / CELL_SIZE.x)
+	var rows := int(WINDOW_SIZE.y / CELL_SIZE.y)
+	return Vector2i(cols, rows)
+
+func cell_distance(cell_a: Vector2i, cell_b: Vector2i) -> int:
+	var d := cell_b - cell_a
+	return maxi(absi(d.x), absi(d.y))
+
+func is_cell_in_range(from_cell: Vector2i, to_cell: Vector2i, min_range: int, max_range: int) -> bool:
+	var d := cell_distance(from_cell, to_cell)
+	return d >= min_range and d <= max_range
+
+func get_cells_in_range(from_cell: Vector2i, min_range: int, max_range: int) -> Array[Vector2i]:
+	var bounds := _get_bounds()
+	var out: Array[Vector2i] = []
+	for dx in range(-max_range, max_range + 1):
+		for dy in range(-max_range, max_range + 1):
+			var c := from_cell + Vector2i(dx, dy)
+			if c.x < 0 or c.y < 0 or c.x >= bounds.x or c.y >= bounds.y:
+				continue
+			var dist := cell_distance(from_cell, c)
+			if dist >= min_range and dist <= max_range:
+				out.append(c)
+	return out
