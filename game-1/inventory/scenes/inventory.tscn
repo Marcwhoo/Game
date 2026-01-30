@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://dfxxx7s51bbfw" path="res://inventory/scripts/slot.gd" id="7_aa18a"]
 [ext_resource type="FontFile" uid="uid://cd7tvhnfkaujp" path="res://pixelfont.tres" id="7_q47fc"]
 [ext_resource type="Script" uid="uid://qcmk3ttiy0tm" path="res://inventory/scripts/player_stats_Label.gd" id="8_1dld7"]
+[ext_resource type="Texture2D" uid="uid://wi5p5d81ajtr" path="res://ui_frame_punchhole_sheet.png" id="11_qryj1"]
+[ext_resource type="Texture2D" uid="uid://bmjc0w1c13vev" path="res://icon_frame.png" id="13_stspg"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q47fc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwt18"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qiki1"]
 font = ExtResource("7_q47fc")
@@ -21,13 +27,28 @@ font = ExtResource("7_q47fc")
 font_size = 10
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qryj1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfgeo"]
 atlas = ExtResource("5_i86t1")
 region = Rect2(32, 224, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pghvf"]
+atlas = ExtResource("11_qryj1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pghvf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_stspg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51ru1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_v08h4"]
 atlas = ExtResource("5_i86t1")
 region = Rect2(160, 256, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hfhh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_do1mn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyojb"]
 atlas = ExtResource("5_i86t1")
@@ -54,19 +75,22 @@ offset_right = 293.0
 offset_bottom = 324.0
 
 [node name="EquipmentContainer" type="PanelContainer" parent="PlayersUI" unique_id=760803149]
-custom_minimum_size = Vector2(0, 190)
+custom_minimum_size = Vector2(0, 222.175)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_q47fc")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer" unique_id=1676739923]
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 15
 
 [node name="PlayerStats" type="PanelContainer" parent="PlayersUI/EquipmentContainer/MarginContainer" unique_id=1337508924]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bwt18")
 script = ExtResource("8_1dld7")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats" unique_id=667878932]
@@ -161,19 +185,20 @@ custom_minimum_size = Vector2(293, 0)
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 140.0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 11
 theme_override_constants/margin_right = 8
 
 [node name="HBoxContainer" type="GridContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer" unique_id=446984222]
 layout_mode = 2
-theme_override_constants/h_separation = 212
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 189
+theme_override_constants/v_separation = 23
 columns = 2
 
 [node name="Helmet" type="PanelContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=264277499 groups=["slot"]]
 texture_filter = 1
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qryj1")
 script = ExtResource("7_aa18a")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" unique_id=71118804]
@@ -187,9 +212,15 @@ modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_mfgeo")
 
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" unique_id=822654370]
+position = Vector2(16, 15.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+
 [node name="Ring" type="PanelContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1418720127 groups=["slot"]]
 texture_filter = 1
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pghvf")
 script = ExtResource("7_aa18a")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" unique_id=916192066]
@@ -202,34 +233,69 @@ layout_mode = 2
 modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
 
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" unique_id=822654371]
+position = Vector2(17, 14.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 1
+
 [node name="Necklace" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1348582581 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_stspg")
 
 [node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Necklace" unique_id=2054167074]
 modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
 
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Necklace" unique_id=822654372]
+position = Vector2(15, 15.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 2
+
 [node name="Ring2" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1272444290 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_51ru1")
 
 [node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring2" unique_id=1974194169]
 modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_v08h4")
 
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring2" unique_id=822654373]
+position = Vector2(17, 15.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 3
+
 [node name="Chest" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=745589942 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3hfhh")
 
 [node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Chest" unique_id=424222878]
 modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
 
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Chest" unique_id=822654374]
+position = Vector2(16, 13.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 4
+
 [node name="Weapon" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1778370249 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Weapon" unique_id=822654369]
+visible = false
+position = Vector2(16, 16.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 5
 
 [node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Weapon" unique_id=337066598]
 modulate = Color(100, 100, 100, 0.1)
@@ -239,89 +305,154 @@ texture = SubResource("AtlasTexture_jyojb")
 [node name="Legs" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=743934561 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" unique_id=29363832]
 modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
 
-[node name="Shoes" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel" unique_id=141748806 instance=ExtResource("3_rg73s")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 8.0
-offset_top = 138.0
-offset_right = 40.0
-offset_bottom = 170.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" unique_id=822654376]
+position = Vector2(16, 14.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 6
 
-[node name="TextureRect" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/Shoes" unique_id=2143972730]
+[node name="Shoes" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=141748806 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="TextureRect" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Shoes" unique_id=2143972730]
 modulate = Color(100, 100, 100, 0.1)
 layout_mode = 2
+
+[node name="punchhole" type="Sprite2D" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Shoes" unique_id=822654377]
+position = Vector2(14, 14.5)
+texture = SubResource("AtlasTexture_pghvf")
+hframes = 8
+frame = 7
 
 [node name="PlayersInventoryPanel" type="MarginContainer" parent="PlayersUI" unique_id=785498338 groups=["inventory"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="GridContainer" type="GridContainer" parent="PlayersUI/PlayersInventoryPanel" unique_id=1232154810]
 layout_mode = 2
-columns = 6
+columns = 8
 
 [node name="Slot" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1420264900 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot" unique_id=1017835376]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot2" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1390898670 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot2" unique_id=1390898371]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot3" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1417989686 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot3" unique_id=1417989387]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot4" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1065485876 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot4" unique_id=1065485578]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot5" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1124464294 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot5" unique_id=1124463996]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot6" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=333025800 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot6" unique_id=-964709594]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot7" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=101633367 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot7" unique_id=1016333370]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot8" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=193803666 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot8" unique_id=1938036368]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot9" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1759407254 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot9" unique_id=1759406956]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot10" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=237159520 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot10" unique_id=-1923372394]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot11" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=430238730 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot11" unique_id=7419706]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="Slot12" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1464786249 instance=ExtResource("3_rg73s")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot12" unique_id=1464785951]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
 
 [node name="MoneyPanelContainer" type="PanelContainer" parent="PlayersUI" unique_id=1465083812]
 custom_minimum_size = Vector2(0, 20)
@@ -363,33 +494,43 @@ columns = 5
 
 [node name="Slot" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=607841019 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot2" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1029227294 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot3" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1621924574 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot4" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=309725511 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot5" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=907195471 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot6" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=2089854270 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot7" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=33742269 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot8" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1559440619 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot9" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1593046719 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot10" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=704477085 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="ShopSellInventoryPanel" type="Control" parent="ShopUI" unique_id=1535621888 groups=["inventory"]]
 unique_name_in_owner = true
@@ -409,46 +550,58 @@ columns = 5
 
 [node name="Slot" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=525598669 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot2" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=1367386910 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot3" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=642012019 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot4" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=524220721 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot5" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=2076408867 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot6" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=495392039 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot7" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=202526582 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot8" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=84480331 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot9" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=835195383 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="Slot10" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=1421545398 instance=ExtResource("3_rg73s")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [node name="GrabbedSlot" parent="." unique_id=682548893 instance=ExtResource("3_rg73s")]
 visible = false
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 480.0
 offset_top = 165.0
-offset_right = 544.0
-offset_bottom = 229.0
+offset_right = 512.0
+offset_bottom = 197.0
 grow_horizontal = 1
 grow_vertical = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" method="_on_gui_input"]
@@ -471,8 +624,8 @@ grow_vertical = 1
 [connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Weapon" to="." method="_on_slot_slot_panel_right_clicked"]
 [connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" to="." method="_on_slot_slot_panel_left_clicked"]
 [connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" to="." method="_on_slot_slot_panel_right_clicked"]
-[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/Shoes" to="." method="_on_slot_slot_panel_left_clicked"]
-[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/Shoes" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Shoes" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Shoes" to="." method="_on_slot_slot_panel_right_clicked"]
 [connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot" to="." method="_on_slot_slot_panel_left_clicked"]
 [connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot" to="." method="_on_slot_slot_panel_right_clicked"]
 [connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot2" to="." method="_on_slot_slot_panel_left_clicked"]

@@ -4,4 +4,13 @@ alwaysApply: true
 
 docs for generating assets https://api.pixellab.ai/mcp/docs, always respond in german
 
-PixelLab API-Token: Liegt in Pixellab stuff/.env (PIXELLAB_API_TOKEN=..., Datei in .gitignore). Beim Ausfuehren von Skripten in Pixellab stuff den Token aus dieser .env verwenden – die Skripte lesen ihn dort automatisch, wenn die Umgebungsvariable nicht gesetzt ist. Nutzer muss den Token nicht erneut angeben.
+f9f9f736-fde4-4eed-8197-8077da1dadb0 das ist der api token wehe du sagst mir irgendwann mal das der api token fehlt
+
+wenn du scripte erstellst zum erstellen von pixelart über das mcp erstelle die scripte so:
+
+sie müssen universell wiederverwertbar sein. wenn du ein ui elemnt erstellst zumbeispiel, schreibe das script so, das man damit alle ui elemte erstellen kann immer mit anderen parametern.
+wenn dir dire referenz zum style fehlt frag mich, ich sag dir wie der style sein soll
+
+nach dem generieren müssen alle scripte das image selbständig downloaden und im pixellabs folder speichern. wenn irgendwas unklar ist frag mich.
+
+bevor du neue scripte erstellst, prüfst du ob es scripte gibt die ähnliche funktionen haben oder gleiche. wenn es welche gibt die ähnlich sind passe sie an anstatt für jeden scheiß ein neues script zu erstellen

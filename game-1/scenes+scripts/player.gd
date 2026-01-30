@@ -28,7 +28,7 @@ func _ready() -> void:
 	add_to_group("player")
 	damage_output_calc = get_node_or_null("DamageOutputCalculation")
 	damage_input_calc = get_node_or_null("DamageInputCalculation")
-	player_ui = get_node_or_null("Control")
+	player_ui = get_node_or_null("player_ui")
 	if player_data:
 		current_health = player_data.current_health
 		max_health = player_data.max_health

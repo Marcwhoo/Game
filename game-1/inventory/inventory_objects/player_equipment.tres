@@ -6,5 +6,5 @@
 
 [resource]
 script = ExtResource("5_gul4n")
-items_in_inventory = Array[ExtResource("1_mvvm4")]([null, null, null, null, null, null, ExtResource("2_uje4w"), null])
+items_in_inventory = Array[ExtResource("1_mvvm4")]([null, null, null, null, null, ExtResource("2_uje4w"), null, null])
 inventory_name = "players_equipment"

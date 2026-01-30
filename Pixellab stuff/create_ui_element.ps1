@@ -92,15 +92,57 @@ try {
     exit 1
 }
 
+$outFile = Join-Path $OutputDir $outFileName
 $b64 = $null
 if ($r.images -and $r.images[0].base64) { $b64 = $r.images[0].base64 }
 if ($r.data -and $r.data.images -and $r.data.images[0].base64) { $b64 = $r.data.images[0].base64 }
 if ($b64) {
-    $outFile = Join-Path $OutputDir $outFileName
     [IO.File]::WriteAllBytes($outFile, [Convert]::FromBase64String($b64))
     Write-Host "Gespeichert: $outFile"
-} else {
-    Write-Host "Kein Bild in Response."
+    Write-Host "Fertig."
+    exit 0
+}
+
+if ($r.background_job_id) {
+    $jobId = $r.background_job_id
+    Write-Host "Job gestartet (async). Job-ID: $jobId"
+    Write-Host "Warte auf Abschluss (Poll alle 8 Sekunden)..."
+    $maxAttempts = 60
+    $attempt = 0
+    while ($attempt -lt $maxAttempts) {
+        Start-Sleep -Seconds 8
+        $attempt++
+        try {
+            $jobResp = Invoke-RestMethod -Uri "https://api.pixellab.ai/v2/background-jobs/$jobId" -Method GET -Headers $headers
+        } catch { Write-Host "  Poll Fehler: $_"; continue }
+        $status = $jobResp.status
+        Write-Host "  [$attempt] Status: $status"
+        if ($status -eq "completed") {
+            $imgBase64 = $null
+            if ($jobResp.data -and $jobResp.data.images -and $jobResp.data.images[0].base64) { $imgBase64 = $jobResp.data.images[0].base64 }
+            elseif ($jobResp.result -and $jobResp.result.images -and $jobResp.result.images[0].base64) { $imgBase64 = $jobResp.result.images[0].base64 }
+            elseif ($jobResp.images -and $jobResp.images[0].base64) { $imgBase64 = $jobResp.images[0].base64 }
+            if ($jobResp.data -and $jobResp.data.result -and $jobResp.data.result.images) { $imgBase64 = $jobResp.data.result.images[0].base64 }
+            if ($jobResp.data -and $jobResp.data.result -and $jobResp.data.result.base64) { $imgBase64 = $jobResp.data.result.base64 }
+            if ($imgBase64) {
+                [IO.File]::WriteAllBytes($outFile, [Convert]::FromBase64String($imgBase64))
+                Write-Host "Gespeichert: $outFile"
+            } else {
+                $url = $jobResp.data.images[0].url; if (-not $url) { $url = $jobResp.result.images[0].url }
+                if ($url) { Invoke-WebRequest -Uri $url -OutFile $outFile -UseBasicParsing; Write-Host "Gespeichert: $outFile" }
+                else { Write-Host "Job fertig, aber kein Bild in Response."; exit 1 }
+            }
+            Write-Host "Fertig."
+            exit 0
+        }
+        if ($status -eq "failed") {
+            Write-Host "Job fehlgeschlagen: $($jobResp.error | ConvertTo-Json -Compress)"
+            exit 1
+        }
+    }
+    Write-Host "Timeout nach $maxAttempts Versuchen."
     exit 1
 }
-Write-Host "Fertig."
+
+Write-Host "Kein Bild in Response."
+exit 1

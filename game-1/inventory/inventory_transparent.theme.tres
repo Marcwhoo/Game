@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_transparent"]
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_transparent")

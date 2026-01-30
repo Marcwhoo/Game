@@ -51,6 +51,9 @@ func _input(event: InputEvent) -> void:
 				print("player clicked cell ", cell)
 				cell_clicked.emit(cell)
 
+# Klick-Routing: Grid nutzt _input (nicht _unhandled_input), damit Klicks nicht von UI
+# "verbraucht" werden. Jedes klickbare UI (inkl. Slider-Pfeil-Buttons) muss in "game_ui"
+# sein, sonst wertet das Grid den Klick als Zellenklick und verbraucht ihn.
 func _is_click_on_ui(viewport_pos: Vector2) -> bool:
 	var vp := get_viewport()
 	var canvas_transform: Transform2D = vp.get_canvas_transform()
@@ -58,6 +61,8 @@ func _is_click_on_ui(viewport_pos: Vector2) -> bool:
 	for node in get_tree().get_nodes_in_group("game_ui"):
 		if node is Control:
 			var ctrl: Control = node as Control
+			if not ctrl.visible:
+				continue
 			if ctrl.get_global_rect().has_point(canvas_pos):
 				return true
 	return false

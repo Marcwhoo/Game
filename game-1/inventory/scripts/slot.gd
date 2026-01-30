@@ -18,22 +18,20 @@ func _ready() -> void:
 	if this_panels_type == "Ring2":
 		this_panels_type = "Ring"
 
-func disable_background() -> void:
+func update_placeholder_visibility() -> void:
 	var background_node: Node = find_child("Background", true, false)
 	if background_node:
-		background_node.visible = false
-
-func anable_background() -> void:
-	var background_node: Node = find_child("Background", true, false)
-	if background_node:
-		background_node.visible = true
+		background_node.visible = not item_object
+	var punchhole_node: Node = find_child("punchhole", true, false)
+	if punchhole_node:
+		punchhole_node.visible = item_object != null
 
 func fill_item(grabbed_slot: Node) -> void:
 	if grabbed_slot.item_object:
 		item_object = grabbed_slot.item_object
 		texture_rect.texture = grabbed_slot.item_object.texture
 		panel_is_in_this_inventory.items_in_inventory[panels_index] = item_object
-		disable_background()
+		update_placeholder_visibility()
 	else:
 		remove_item()
 
@@ -41,13 +39,17 @@ func remove_item() -> void:
 	item_object = null
 	texture_rect.texture = null
 	panel_is_in_this_inventory.items_in_inventory[panels_index] = null
-	anable_background()
+	var punchhole_node: Node = find_child("punchhole", true, false)
+	if punchhole_node:
+		punchhole_node.visible = false
+	update_placeholder_visibility()
 
 func swap_item(grabbed_slot: Node) -> void:
 	var temp_item: ItemObject = item_object
 	fill_item(grabbed_slot)
 	grabbed_slot.item_object = temp_item
 	grabbed_slot.texture_rect.texture = grabbed_slot.item_object.texture if grabbed_slot.item_object else null
+	grabbed_slot.update_placeholder_visibility()
 
 func _on_gui_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton or not event.is_pressed():

@@ -99,6 +99,11 @@ func populate_inventory_panels(slot_panels: Array, slot_panels_amount: int, objs
 		if index < objs_in_inv_obj.size() and objs_in_inv_obj[index]:
 			slot_panels[index].item_object = objs_in_inv_obj[index]
 			slot_panels[index].texture_rect.texture = objs_in_inv_obj[index].texture
+			slot_panels[index].update_placeholder_visibility()
+		else:
+			slot_panels[index].item_object = null
+			slot_panels[index].texture_rect.texture = null
+			slot_panels[index].update_placeholder_visibility()
 
 func _on_slot_slot_panel_right_clicked(slot_panel: Node) -> void:
 	match slot_panel.panel_is_in_this_inventory:
