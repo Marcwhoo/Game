@@ -10,8 +10,16 @@ var attack_range_max: int = 1
 var damage_input_calc: Node
 var damage_output_calc: Node
 
+const MOVE_DURATION := 0.2
+const ANIM_WALKING := "walking"
+const ANIM_DEATH := "death"
+
+var _anim_player: AnimationPlayer
+var _is_dead := false
+
 func _ready() -> void:
 	add_to_group("enemy")
+	_anim_player = get_node_or_null("AnimationPlayer")
 	damage_input_calc = get_node_or_null("DamageInputCalculation")
 	damage_output_calc = get_node_or_null("DamageOutputCalculation")
 	if grid:
@@ -20,9 +28,12 @@ func _ready() -> void:
 		grid.register_occupant(self, start_cell)
 	if has_node("Control") and get_node("Control").has_method("update_health"):
 		get_node("Control").call_deferred("update_health", current_health, max_health)
+	_play_idle()
 
 
 func take_damage(raw_damage: float) -> void:
+	if _is_dead:
+		return
 	var incoming: float = float(raw_damage)
 	var final_damage: float = incoming
 	if damage_input_calc and damage_input_calc.has_method("apply_resistances"):
@@ -33,6 +44,9 @@ func take_damage(raw_damage: float) -> void:
 	if has_node("Control") and get_node("Control").has_method("update_health"):
 		get_node("Control").update_health(current_health, max_health)
 	_spawn_floating_damage(final_damage)
+	if current_health <= 0.0:
+		_is_dead = true
+		_die()
 
 
 func _spawn_floating_damage(amount: float) -> void:
@@ -50,7 +64,7 @@ func try_attack(_cell: Vector2i, target: Node) -> bool:
 
 
 func take_turn() -> void:
-	if not grid or current_health <= 0.0:
+	if not grid or _is_dead or current_health <= 0.0:
 		return
 	var target: Node = get_tree().get_first_node_in_group("player")
 	if not target:
@@ -66,7 +80,8 @@ func take_turn() -> void:
 	if path.is_empty():
 		return
 	var next_cell: Vector2i = path[0]
-	move_toward_cell(next_cell)
+	await move_toward_cell(next_cell)
+	_play_idle()
 
 
 func move_toward_cell(cell: Vector2i) -> void:
@@ -81,8 +96,12 @@ func move_toward_cell(cell: Vector2i) -> void:
 	if not grid.is_cell_walkable(new_cell) or not grid.is_cell_empty(new_cell):
 		return
 	_set_facing(step)
-	global_position = grid.cell_to_world(new_cell)
+	var end_pos: Vector2 = grid.cell_to_world(new_cell)
 	grid.move_occupant(self, current, new_cell)
+	_play_walking()
+	var tween := create_tween()
+	tween.tween_property(self, "global_position", end_pos, MOVE_DURATION)
+	await tween.finished
 
 
 func _set_facing(step: Vector2i) -> void:
@@ -91,3 +110,23 @@ func _set_facing(step: Vector2i) -> void:
 	var spr: Node2D = get_node_or_null("BearQuadrupedEast")
 	if spr:
 		spr.scale.x = 1.0 if step.x < 0 else -1.0
+
+
+func _play_idle() -> void:
+	if _anim_player and _anim_player.has_animation("idle"):
+		_anim_player.play("idle")
+
+
+func _play_walking() -> void:
+	if _anim_player and _anim_player.has_animation(ANIM_WALKING):
+		_anim_player.play(ANIM_WALKING)
+
+
+func _die() -> void:
+	if grid:
+		var cell: Vector2i = grid.world_to_cell(global_position)
+		grid.unregister_occupant(self, cell)
+	remove_from_group("enemy")
+	z_index = 3
+	if _anim_player and _anim_player.has_animation(ANIM_DEATH):
+		_anim_player.play(ANIM_DEATH)

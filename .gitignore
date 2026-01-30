@@ -5,3 +5,6 @@ Godot*.exe
 # OS
 Thumbs.db
 .DS_Store
+
+# PixelLab (Token nicht committen)
+Pixellab stuff/.env

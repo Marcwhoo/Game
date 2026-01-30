@@ -27,7 +27,7 @@ func _on_cell_clicked(cell: Vector2i) -> void:
 	if not enemies.is_empty() and in_range:
 		did_something = warrior.try_attack(cell, enemies[0])
 	else:
-		did_something = warrior.move_toward_cell(cell)
+		did_something = await warrior.move_toward_cell(cell)
 	if did_something:
 		turn_manager.end_player_turn()
 
@@ -35,9 +35,9 @@ func _on_cell_clicked(cell: Vector2i) -> void:
 func _on_turn_changed(is_player_turn: bool) -> void:
 	if is_player_turn:
 		return
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(0.5).timeout
 	var enemies: Array = get_tree().get_nodes_in_group("enemy")
 	for e in enemies:
 		if e.has_method("take_turn"):
-			e.take_turn()
+			await e.take_turn()
 	turn_manager.end_enemy_turn()

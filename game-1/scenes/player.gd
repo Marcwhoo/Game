@@ -11,6 +11,8 @@ var attack_range_max: float = 1
 var damage_output_calc: Node
 var damage_input_calc: Node
 
+const MOVE_DURATION := 0.2
+
 func _ready() -> void:
 	add_to_group("player")
 	damage_output_calc = get_node_or_null("DamageOutputCalculation")
@@ -67,8 +69,11 @@ func move_toward_cell(cell: Vector2i) -> bool:
 	if not grid.is_cell_empty(new_cell):
 		return false
 	_set_facing(step)
-	global_position = grid.cell_to_world(new_cell)
+	var end_pos: Vector2 = grid.cell_to_world(new_cell)
 	grid.move_occupant(self, current, new_cell)
+	var tween := create_tween()
+	tween.tween_property(self, "global_position", end_pos, MOVE_DURATION)
+	await tween.finished
 	return true
 
 
