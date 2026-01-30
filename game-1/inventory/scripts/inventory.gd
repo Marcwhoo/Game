@@ -59,16 +59,14 @@ func _collect_all_slots() -> Array:
 	return out
 
 func _on_slot_tooltip_show(rect: Rect2i, item_object: ItemObject) -> void:
-	var tl: Label = get_node_or_null("%TooltipLabel")
-	if tl and item_object:
-		tl.text = item_object.name
-		tl.global_position = Vector2(rect.position.x, rect.position.y - tl.size.y)
-		tl.show()
+	var popup_node: Node = get_parent().get_parent().get_node_or_null("popup")
+	if popup_node and popup_node.has_method("show_tooltip"):
+		popup_node.show_tooltip(rect, item_object)
 
 func _on_slot_tooltip_hide() -> void:
-	var tl: Label = get_node_or_null("%TooltipLabel")
-	if tl:
-		tl.hide()
+	var popup_node: Node = get_parent().get_parent().get_node_or_null("popup")
+	if popup_node and popup_node.has_method("hide_tooltip"):
+		popup_node.hide_tooltip()
 
 func _refresh_money_label() -> void:
 	if player and player.get("money") != null:

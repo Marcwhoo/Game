@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://ddlvaa8kdqsj1"]
+
+[ext_resource type="Script" path="res://scenes+scripts/popup.gd" id="1_kdksa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqrjm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.288518, 0.288518, 0.288518, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+anti_aliasing_size = 10.0
+
+[node name="popup" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -1649.0
+offset_bottom = -689.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_kdksa")
+
+[node name="ItemTooltip" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 358.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pqrjm")
+
+[node name="MarginContainer" type="MarginContainer" parent="ItemTooltip"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemTooltip/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Superduper mega tolle axt"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Type" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Type:"
+
+[node name="Rarity" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "rare"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="DamageH" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Damage" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/DamageH"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Damage:"
+
+[node name="DamageValue" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/DamageH"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "1
+"
+
+[node name="ArmorH" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Armor" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/ArmorH"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Armor:"
+
+[node name="ArmorValue" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/ArmorH"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "1
+"
+
+[node name="AtkSpdH" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="AtkSpd" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/AtkSpdH"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Atk speed:"
+
+[node name="AtkSpdValue" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/AtkSpdH"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "1
+"
+
+[node name="MoveSpeedH" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Movespeed" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/MoveSpeedH"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Walk speed:"
+
+[node name="MovespeedValue" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/MoveSpeedH"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "1
+"
+
+[node name="AtkMoveSpeedH" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="AtkMovespeed" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/AtkMoveSpeedH"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Atk Walk :"
+
+[node name="AtkMovespeedValue" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/AtkMoveSpeedH"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "1
+"
+
+[node name="CostH" type="HBoxContainer" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Cost" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/CostH"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Cost:"
+
+[node name="CostValue" type="Label" parent="ItemTooltip/MarginContainer/VBoxContainer/VBoxContainer/CostH"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "1
+"

@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dfbq6fgtigtxs" path="res://assets/ui arrow.png" id="10_mrb1c"]
 [ext_resource type="Script" uid="uid://bbec5fkafsn0o" path="res://scenes+scripts/ui_slider_left.gd" id="11_sliderl"]
 [ext_resource type="Script" uid="uid://opnmwpsqg47k" path="res://scenes+scripts/ui_slider_right.gd" id="12_sliderr"]
+[ext_resource type="PackedScene" uid="uid://ddlvaa8kdqsj1" path="res://scenes+scripts/popup.tscn" id="15_571d2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnc7q"]
 texture = ExtResource("5_i5kx8")
@@ -833,3 +834,11 @@ tile_set = SubResource("TileSet_fd8bd")
 position = Vector2(-7, 171)
 texture = ExtResource("10_mrb1c")
 flip_h = true
+
+[node name="popup" parent="." unique_id=853673214 instance=ExtResource("15_571d2")]
+z_index = 7
+layout_mode = 1
+offset_left = 352.0
+offset_top = -207.0
+offset_right = 312.0
+offset_bottom = -247.0

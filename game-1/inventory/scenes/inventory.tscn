@@ -11,7 +11,10 @@
 [ext_resource type="FontFile" uid="uid://cd7tvhnfkaujp" path="res://pixelfont.tres" id="7_q47fc"]
 [ext_resource type="Script" uid="uid://qcmk3ttiy0tm" path="res://inventory/scripts/player_stats_Label.gd" id="8_1dld7"]
 [ext_resource type="Texture2D" uid="uid://wi5p5d81ajtr" path="res://ui_frame_punchhole_sheet.png" id="11_qryj1"]
+[ext_resource type="Texture2D" uid="uid://de7p64rkd2yhn" path="res://scenes+scripts/copper_ore.png" id="13_3hfhh"]
 [ext_resource type="Texture2D" uid="uid://bmjc0w1c13vev" path="res://icon_frame.png" id="13_stspg"]
+[ext_resource type="Texture2D" uid="uid://cmsrb8343s6c8" path="res://scenes+scripts/gold_ore.png" id="14_bwt18"]
+[ext_resource type="Texture2D" uid="uid://7yd8tlxv70gg" path="res://scenes+scripts/silver_ore.png" id="15_do1mn"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_q47fc"]
 
@@ -75,7 +78,7 @@ offset_right = 293.0
 offset_bottom = 324.0
 
 [node name="EquipmentContainer" type="PanelContainer" parent="PlayersUI" unique_id=760803149]
-custom_minimum_size = Vector2(0, 222.175)
+custom_minimum_size = Vector2(0, 217.3)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_q47fc")
 
@@ -454,14 +457,14 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 position = Vector2(16, 16)
 texture = ExtResource("13_stspg")
 
-[node name="MoneyPanelContainer" type="PanelContainer" parent="PlayersUI" unique_id=1465083812]
-custom_minimum_size = Vector2(0, 20)
+[node name="MoneyPanelContainer" type="MarginContainer" parent="PlayersUI" unique_id=1464687975]
 layout_mode = 2
+theme_override_constants/margin_left = 4
 
 [node name="MoneyPanel" type="Label" parent="PlayersUI/MoneyPanelContainer" unique_id=2011117727]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Money: 
+text = "					:
 "
 label_settings = SubResource("LabelSettings_pydyk")
 
@@ -602,6 +605,18 @@ offset_bottom = 197.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="CopperOre" type="Sprite2D" parent="." unique_id=368073522]
+position = Vector2(41, 317)
+texture = ExtResource("13_3hfhh")
+
+[node name="GoldOre" type="Sprite2D" parent="." unique_id=2026087698]
+position = Vector2(77, 319)
+texture = ExtResource("14_bwt18")
+
+[node name="SilverOre" type="Sprite2D" parent="." unique_id=959945868]
+position = Vector2(111, 318)
+texture = ExtResource("15_do1mn")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" method="_on_gui_input"]
