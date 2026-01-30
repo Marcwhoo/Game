@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://cg57i4hmsks67"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_uektp"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_a814i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntjeh"]
+atlas = ExtResource("2_a814i")
+region = Rect2(64, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_uektp")
+name = "Fighters Sword"
+discription = "Good Weapon"
+texture = SubResource("AtlasTexture_ntjeh")
+damage = 3
+cost = 3
+weapon_type = "Normal"
+rarity = "Common"
+type = "Weapon"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://cg1qbdse8qj8p"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_gjpbu"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_jww3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ogp"]
+atlas = ExtResource("2_jww3v")
+region = Rect2(320, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_gjpbu")
+name = "Whirling Axe"
+texture = SubResource("AtlasTexture_82ogp")
+damage = 2
+cost = 400
+playerattack_movement_speed = 10
+attack_speed = 0.4
+weapon_type = "Whirl"
+rarity = "Set"
+type = "Weapon"

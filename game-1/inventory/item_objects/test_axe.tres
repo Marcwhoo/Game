@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://bw0pukr05v27d"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_y6mdg"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_4xo44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_4xo44")
+region = Rect2(320, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_y6mdg")
+name = "axe"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+damage = 50
+cost = 15
+move_speed = 100
+attack_speed = 0.5
+rarity = "Epic"
+type = "Weapon"

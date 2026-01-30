@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://buik4t6n4m1y1"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_uektp"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_a814i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwmd2"]
+atlas = ExtResource("2_a814i")
+region = Rect2(96, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_uektp")
+name = "Rapier"
+texture = SubResource("AtlasTexture_vwmd2")
+damage = 1
+cost = 4
+attack_speed = 0.5
+weapon_type = "Normal"
+rarity = "Common"
+type = "Weapon"

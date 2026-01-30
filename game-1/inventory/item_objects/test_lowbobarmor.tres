@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://15kjqemjdlo"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_vf82p"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_org2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_org2s")
+region = Rect2(192, 224, 32, 32)
+
+[resource]
+script = ExtResource("1_vf82p")
+name = "lowbob"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+armor = 5
+cost = 1243
+rarity = "Poor"
+type = "Chest"

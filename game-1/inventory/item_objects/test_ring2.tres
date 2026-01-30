@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://d2i8jfd6itwpg"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_j0q5c"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_qm70x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_qm70x")
+region = Rect2(160, 256, 32, 32)
+
+[resource]
+script = ExtResource("1_j0q5c")
+name = "ring2"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+damage = 100
+armor = 100
+cost = 9
+move_speed = 110
+attack_speed = 1.0
+rarity = "Set"
+type = "Ring"

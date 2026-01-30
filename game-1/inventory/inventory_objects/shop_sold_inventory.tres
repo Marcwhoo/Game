@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryObject" format=3 uid="uid://watlk263bu4m"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_2loqp"]
+[ext_resource type="Resource" uid="uid://pl7pari8xe6o" path="res://inventory/item_objects/test_rar_legs.tres" id="2_hgxde"]
+[ext_resource type="Resource" uid="uid://dfyl7hjn7ah0y" path="res://inventory/item_objects/test_set_helm.tres" id="3_lop17"]
+[ext_resource type="Script" uid="uid://c6wwmhipe7d2" path="res://inventory/classes/inventory_class.gd" id="3_ro4u5"]
+[ext_resource type="Resource" uid="uid://cnoqa7w3eo0qy" path="res://inventory/item_objects/test_wood_sword.tres" id="4_xpe0l"]
+[ext_resource type="Resource" uid="uid://boudic7dqu74o" path="res://inventory/item_objects/test_ppor_shoes.tres" id="5_g80ys"]
+[ext_resource type="Resource" uid="uid://c7emtxbyxnnky" path="res://inventory/item_objects/test_common_necklace.tres" id="6_mrlcl"]
+[ext_resource type="Resource" uid="uid://15kjqemjdlo" path="res://inventory/item_objects/test_lowbobarmor.tres" id="7_rhtbt"]
+
+[resource]
+script = ExtResource("3_ro4u5")
+items_in_inventory = Array[ExtResource("1_2loqp")]([ExtResource("2_hgxde"), ExtResource("3_lop17"), ExtResource("4_xpe0l"), ExtResource("5_g80ys"), ExtResource("6_mrlcl"), ExtResource("7_rhtbt"), ExtResource("3_lop17"), ExtResource("6_mrlcl"), ExtResource("6_mrlcl"), null])
+inventory_name = "shop_sold"

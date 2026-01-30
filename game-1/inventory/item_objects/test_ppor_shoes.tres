@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://boudic7dqu74o"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_pjy0x"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_67uv0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_67uv0")
+region = Rect2(64, 256, 32, 32)
+
+[resource]
+script = ExtResource("1_pjy0x")
+name = "poor shoes"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+armor = 5
+cost = 2
+move_speed = 17
+rarity = "Poor"
+type = "Shoes"

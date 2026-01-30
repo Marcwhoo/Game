@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://de7d0h3bs5po7"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_i2xp8"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_3xjfu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm2y4"]
+atlas = ExtResource("2_3xjfu")
+region = Rect2(384, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_i2xp8")
+name = "Morning Star"
+texture = SubResource("AtlasTexture_jm2y4")
+damage = 6
+cost = 500
+attack_speed = 0.3
+weapon_type = "Normal"
+rarity = "Epic"
+type = "Weapon"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryObject" load_steps=4 format=3 uid="uid://4olr3pt8vb58"]
+
+[ext_resource type="Script" path="res://inventory/classes/item_class.gd" id="1_r3xuy"]
+[ext_resource type="Resource" uid="uid://dtu6bdb742yx1" path="res://item_objects/epic_armor.tres" id="2_iai7r"]
+[ext_resource type="Script" path="res://inventory/classes/inventory_class.gd" id="4_t55w2"]
+
+[resource]
+script = ExtResource("4_t55w2")
+items_in_inventory = Array[ExtResource("1_r3xuy")]([ExtResource("2_iai7r"), ExtResource("2_iai7r"), null, null])

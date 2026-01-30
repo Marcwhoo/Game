@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://be0m5lojv2tv5"]
+
+[ext_resource type="Script" uid="uid://dfxxx7s51bbfw" path="res://inventory/scripts/slot.gd" id="1_ysbcj"]
+
+[node name="Slot" type="PanelContainer" groups=["slot"]]
+texture_filter = 1
+custom_minimum_size = Vector2(84, 84)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ysbcj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

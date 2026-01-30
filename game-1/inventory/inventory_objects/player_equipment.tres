@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryObject" format=3 uid="uid://5r82vhq0prcw"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_mvvm4"]
+[ext_resource type="Resource" uid="uid://c4vokfy56pjwj" path="res://inventory/item_objects/weapons/wooden_sword.tres" id="2_uje4w"]
+[ext_resource type="Script" uid="uid://c6wwmhipe7d2" path="res://inventory/classes/inventory_class.gd" id="5_gul4n"]
+
+[resource]
+script = ExtResource("5_gul4n")
+items_in_inventory = Array[ExtResource("1_mvvm4")]([null, null, null, null, null, null, ExtResource("2_uje4w"), null])
+inventory_name = "players_equipment"

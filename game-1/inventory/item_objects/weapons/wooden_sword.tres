@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://c4vokfy56pjwj"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_ry4wu"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_8288n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60su8"]
+atlas = ExtResource("2_8288n")
+region = Rect2(0, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_ry4wu")
+name = "Wooden Sword"
+discription = "Basic Weapon"
+texture = SubResource("AtlasTexture_60su8")
+damage = 1
+cost = 1
+weapon_type = "Normal"
+rarity = "Poor"
+type = "Weapon"

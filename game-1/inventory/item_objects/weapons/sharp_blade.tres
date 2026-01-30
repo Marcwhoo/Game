@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://xypibet11h7d"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_8cfny"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_hkxdi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7srs"]
+atlas = ExtResource("2_hkxdi")
+region = Rect2(128, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_8cfny")
+name = "Sharp Blade"
+discription = "Good Weapon"
+texture = SubResource("AtlasTexture_t7srs")
+damage = 4
+cost = 10
+attack_speed = 0.2
+weapon_type = "Normal"
+rarity = "Rare"
+type = "Weapon"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://c7emtxbyxnnky"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_lsu5r"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_5nbux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_5nbux")
+region = Rect2(256, 256, 32, 32)
+
+[resource]
+script = ExtResource("1_lsu5r")
+name = "shit necklace"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+armor = 4
+cost = 1
+rarity = "Common"
+type = "Necklace"

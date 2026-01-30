@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://bpwbj7rtd572e"]
+
+[ext_resource type="Script" uid="uid://4ews15jyarf5" path="res://inventory/pickable_item/Pickable_item.gd" id="1_7ot4k"]
+[ext_resource type="Texture2D" uid="uid://bxr2waxrab1xc" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/item_atlas.tres" id="2_ahjcw"]
+
+[sub_resource type="Curve" id="Curve_24oog"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -5.94061), 0.0, 198.852, 0, 0, Vector2(0.0383275, 144.837), 0.0, 0.0, 0, 0, Vector2(0.958188, -182.461), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_0sni0"]
+offsets = PackedFloat32Array(0, 0.996139)
+colors = PackedColorArray(1, 0.9375, 0, 1, 0.265625, 0.249023, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_srw12"]
+colors = PackedColorArray(0.117647, 1, 0, 1, 0.0367647, 0.3125, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7jar"]
+size = Vector2(40, 41.5)
+
+[sub_resource type="Animation" id="Animation_mloo4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.13446]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.56905]
+}
+
+[sub_resource type="Animation" id="Animation_dqvyg"]
+resource_name = "drop_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.56905, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wlj0k"]
+_data = {
+"RESET": SubResource("Animation_mloo4"),
+"drop_animation": SubResource("Animation_dqvyg")
+}
+
+[node name="PickupItem" type="RigidBody2D" groups=["pickable_item"]]
+collision_layer = 32768
+collision_mask = 32768
+gravity_scale = 0.0
+script = ExtResource("1_7ot4k")
+
+[node name="LegendaryParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 353
+lifetime = 0.5
+speed_scale = 0.1
+emission_shape = 1
+emission_sphere_radius = 4.35
+gravity = Vector2(0, -1000)
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_24oog")
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 6.54
+color_ramp = SubResource("Gradient_0sni0")
+
+[node name="SetParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 353
+lifetime = 0.5
+speed_scale = 0.1
+emission_shape = 1
+emission_sphere_radius = 4.35
+gravity = Vector2(0, -1000)
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_24oog")
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 6.54
+color_ramp = SubResource("Gradient_srw12")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.13446
+scale = Vector2(1.5, 1.5)
+skew = -1.56905
+texture = ExtResource("2_ahjcw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_w7jar")
+
+[node name="Area2D" type="Area2D" parent="." groups=["interactable_area"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_w7jar")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wlj0k")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

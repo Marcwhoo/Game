@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://pl7pari8xe6o"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_k8rpj"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_hygxr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_hygxr")
+region = Rect2(384, 224, 32, 32)
+
+[resource]
+script = ExtResource("1_k8rpj")
+name = "nice shorts"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+damage = 1
+cost = 43
+move_speed = 14
+rarity = "Rare"
+type = "Legs"

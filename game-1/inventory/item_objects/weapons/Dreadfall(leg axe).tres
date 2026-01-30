@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://cr0b6w3cmg3tl"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_d3voo"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_ofnlw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x33ol"]
+atlas = ExtResource("2_ofnlw")
+region = Rect2(352, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_d3voo")
+name = "Dreadfall"
+texture = SubResource("AtlasTexture_x33ol")
+damage = 15
+cost = 2000
+attack_speed = 0.5
+weapon_type = "Heavy"
+rarity = "Legendary"
+type = "Weapon"

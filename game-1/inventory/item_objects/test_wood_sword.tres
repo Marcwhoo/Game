@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://cnoqa7w3eo0qy"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_06pk6"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="2_b317c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qxn"]
+atlas = ExtResource("2_b317c")
+region = Rect2(0, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_06pk6")
+name = "wooden sword"
+discription = "kids toy, but better then nothing"
+texture = SubResource("AtlasTexture_46qxn")
+damage = 2
+cost = 34
+attack_speed = 2.0
+rarity = "Legendary"
+type = "Weapon"

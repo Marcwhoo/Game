@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemObject" format=3 uid="uid://be1noyooh2cmi"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_v7oii"]
+[ext_resource type="Texture2D" uid="uid://bh38ryu4v4jgs" path="res://assets/old/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_184av"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y5s1"]
+atlas = ExtResource("2_184av")
+region = Rect2(32, 160, 32, 32)
+
+[resource]
+script = ExtResource("1_v7oii")
+name = "Iron Sword"
+discription = "Good Weapon"
+texture = SubResource("AtlasTexture_0y5s1")
+damage = 2
+cost = 2
+weapon_type = "Normal"
+rarity = "Common"
+type = "Weapon"

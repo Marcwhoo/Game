@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryObject" format=3 uid="uid://cftfmks46ofi8"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_ebrip"]
+[ext_resource type="Script" uid="uid://c6wwmhipe7d2" path="res://inventory/classes/inventory_class.gd" id="2_bky1r"]
+[ext_resource type="Resource" uid="uid://c7emtxbyxnnky" path="res://inventory/item_objects/test_common_necklace.tres" id="2_yh3wq"]
+[ext_resource type="Resource" uid="uid://boudic7dqu74o" path="res://inventory/item_objects/test_ppor_shoes.tres" id="3_ylalh"]
+[ext_resource type="Resource" uid="uid://15kjqemjdlo" path="res://inventory/item_objects/test_lowbobarmor.tres" id="4_ve7f7"]
+[ext_resource type="Resource" uid="uid://pl7pari8xe6o" path="res://inventory/item_objects/test_rar_legs.tres" id="5_lx5tc"]
+[ext_resource type="Resource" uid="uid://dtu6bdb742yx1" path="res://inventory/item_objects/test_epic_armor.tres" id="6_fqax4"]
+[ext_resource type="Resource" uid="uid://cnoqa7w3eo0qy" path="res://inventory/item_objects/test_wood_sword.tres" id="7_mm2oh"]
+[ext_resource type="Resource" uid="uid://dfyl7hjn7ah0y" path="res://inventory/item_objects/test_set_helm.tres" id="8_ketxy"]
+
+[resource]
+script = ExtResource("2_bky1r")
+items_in_inventory = Array[ExtResource("1_ebrip")]([null, ExtResource("2_yh3wq"), ExtResource("3_ylalh"), ExtResource("4_ve7f7"), ExtResource("5_lx5tc"), ExtResource("5_lx5tc"), ExtResource("5_lx5tc"), ExtResource("6_fqax4"), ExtResource("7_mm2oh"), ExtResource("8_ketxy")])
+inventory_name = ""

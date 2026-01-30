@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryObject" format=3 uid="uid://4olr3pt8vb58"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_r3xuy"]
+[ext_resource type="Resource" uid="uid://bw0pukr05v27d" path="res://inventory/item_objects/test_axe.tres" id="2_68ts0"]
+[ext_resource type="Resource" uid="uid://boudic7dqu74o" path="res://inventory/item_objects/test_ppor_shoes.tres" id="3_gsnma"]
+[ext_resource type="Resource" uid="uid://dsfe2axd1r8db" path="res://inventory/item_objects/test_ring1.tres" id="4_cy28i"]
+[ext_resource type="Script" uid="uid://c6wwmhipe7d2" path="res://inventory/classes/inventory_class.gd" id="4_t55w2"]
+
+[resource]
+script = ExtResource("4_t55w2")
+items_in_inventory = Array[ExtResource("1_r3xuy")]([ExtResource("2_68ts0"), ExtResource("3_gsnma"), ExtResource("4_cy28i"), null, null, null, null, null, null, null, null, null])
+inventory_name = "shop_buy"

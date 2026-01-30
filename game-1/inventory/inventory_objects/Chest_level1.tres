@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryObject" format=3 uid="uid://cbchex6uwoyt3"]
+
+[ext_resource type="Script" uid="uid://dfrincxkd4jr3" path="res://inventory/classes/item_class.gd" id="1_bbv7t"]
+[ext_resource type="Script" uid="uid://c6wwmhipe7d2" path="res://inventory/classes/inventory_class.gd" id="2_48vlx"]
+[ext_resource type="Resource" uid="uid://bw0pukr05v27d" path="res://inventory/item_objects/test_axe.tres" id="2_o1a3x"]
+[ext_resource type="Resource" uid="uid://c7emtxbyxnnky" path="res://inventory/item_objects/test_common_necklace.tres" id="3_ybnw8"]
+[ext_resource type="Resource" uid="uid://dtu6bdb742yx1" path="res://inventory/item_objects/test_epic_armor.tres" id="4_q8wxm"]
+[ext_resource type="Resource" uid="uid://15kjqemjdlo" path="res://inventory/item_objects/test_lowbobarmor.tres" id="5_bbn2w"]
+
+[resource]
+script = ExtResource("2_48vlx")
+items_in_inventory = Array[ExtResource("1_bbv7t")]([ExtResource("2_o1a3x"), ExtResource("3_ybnw8"), ExtResource("4_q8wxm"), ExtResource("5_bbn2w"), ExtResource("5_bbn2w"), ExtResource("5_bbn2w"), ExtResource("5_bbn2w"), ExtResource("5_bbn2w"), ExtResource("5_bbn2w"), ExtResource("5_bbn2w")])
+inventory_name = ""

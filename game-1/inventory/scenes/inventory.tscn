@@ -1,0 +1,539 @@
+[gd_scene format=3 uid="uid://d1d6uxl7qqx3i"]
+
+[ext_resource type="Script" uid="uid://dxad5xgmo1wtr" path="res://inventory/scripts/inventory.gd" id="1_xxcii"]
+[ext_resource type="Resource" uid="uid://b20v1x0moh84u" path="res://inventory/inventory_objects/player_inventory.tres" id="2_8q1r8"]
+[ext_resource type="Resource" uid="uid://4olr3pt8vb58" path="res://inventory/inventory_objects/shop_buy_inventory.tres" id="3_5mmm7"]
+[ext_resource type="PackedScene" uid="uid://be0m5lojv2tv5" path="res://inventory/scenes/slot.tscn" id="3_rg73s"]
+[ext_resource type="Resource" uid="uid://5r82vhq0prcw" path="res://inventory/inventory_objects/player_equipment.tres" id="4_8bbkf"]
+[ext_resource type="Texture2D" uid="uid://b5kt25hf1uf6e" path="res://inventory/textures/#1 - Transparent Icons.png" id="5_i86t1"]
+[ext_resource type="Resource" uid="uid://watlk263bu4m" path="res://inventory/inventory_objects/shop_sold_inventory.tres" id="5_wib31"]
+[ext_resource type="Script" uid="uid://dfxxx7s51bbfw" path="res://inventory/scripts/slot.gd" id="7_aa18a"]
+[ext_resource type="FontFile" uid="uid://cd7tvhnfkaujp" path="res://pixelfont.tres" id="7_q47fc"]
+[ext_resource type="Script" uid="uid://qcmk3ttiy0tm" path="res://inventory/scripts/player_stats_Label.gd" id="8_1dld7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qiki1"]
+font = ExtResource("7_q47fc")
+font_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0h1lm"]
+font = ExtResource("7_q47fc")
+font_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfgeo"]
+atlas = ExtResource("5_i86t1")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v08h4"]
+atlas = ExtResource("5_i86t1")
+region = Rect2(160, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyojb"]
+atlas = ExtResource("5_i86t1")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pydyk"]
+font = ExtResource("7_q47fc")
+font_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InventoryManager" type="Control" unique_id=1338109535 groups=["inventory_manager"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xxcii")
+players_equipment_inv_object = ExtResource("4_8bbkf")
+players_inv_object = ExtResource("2_8q1r8")
+shop_buy_inv_object = ExtResource("3_5mmm7")
+shop_sold_inv_object = ExtResource("5_wib31")
+
+[node name="PlayersUI" type="VBoxContainer" parent="." unique_id=1975999917]
+layout_direction = 2
+layout_mode = 0
+offset_right = 293.0
+offset_bottom = 324.0
+
+[node name="EquipmentContainer" type="PanelContainer" parent="PlayersUI" unique_id=760803149]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer" unique_id=1676739923]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="PlayerStats" type="PanelContainer" parent="PlayersUI/EquipmentContainer/MarginContainer" unique_id=1337508924]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("8_1dld7")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats" unique_id=667878932]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer" unique_id=1951167777]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer" unique_id=1385739020]
+layout_mode = 2
+alignment = 2
+
+[node name="Movementspeed" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer" unique_id=689633770]
+layout_mode = 2
+text = "Movementspeed:
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="Attackspeed" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer" unique_id=529866843]
+layout_mode = 2
+text = "Attackspeed:
+"
+label_settings = SubResource("LabelSettings_0h1lm")
+
+[node name="Health" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer" unique_id=912695615]
+layout_mode = 2
+text = "Health:
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="Armor" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer" unique_id=549715406]
+layout_mode = 2
+text = "Armor:
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="Damage" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1497384632]
+layout_mode = 2
+text = "Damage:
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer" unique_id=610167576]
+layout_mode = 2
+alignment = 2
+
+[node name="MovementspeedLabel" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1220803379]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="AttackspeedLabel" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1421142122]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="HealthLabel" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1958336431]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="ArmorLabel" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1360869437]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="DamageLabel" type="Label" parent="PlayersUI/EquipmentContainer/MarginContainer/PlayerStats/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1716900188]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_qiki1")
+
+[node name="PlayerEquipmentPanel" type="Control" parent="PlayersUI/EquipmentContainer" unique_id=1608995371 groups=["inventory"]]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel" unique_id=1755247237]
+custom_minimum_size = Vector2(293, 0)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 140.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="GridContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer" unique_id=446984222]
+layout_mode = 2
+theme_override_constants/h_separation = 212
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Helmet" type="PanelContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=264277499 groups=["slot"]]
+texture_filter = 1
+layout_mode = 2
+script = ExtResource("7_aa18a")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" unique_id=71118804]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet/MarginContainer" unique_id=1195023764]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet/MarginContainer" unique_id=43692967]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mfgeo")
+
+[node name="Ring" type="PanelContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1418720127 groups=["slot"]]
+texture_filter = 1
+layout_mode = 2
+script = ExtResource("7_aa18a")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" unique_id=916192066]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring/MarginContainer" unique_id=1368221896]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring/MarginContainer" unique_id=1261603509]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+
+[node name="Necklace" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1348582581 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Necklace" unique_id=2054167074]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+
+[node name="Ring2" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1272444290 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring2" unique_id=1974194169]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_v08h4")
+
+[node name="Chest" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=745589942 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Chest" unique_id=424222878]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+
+[node name="Weapon" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=1778370249 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Weapon" unique_id=337066598]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jyojb")
+
+[node name="Legs" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer" unique_id=743934561 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" unique_id=29363832]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+
+[node name="Shoes" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel" unique_id=141748806 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 138.0
+offset_right = 40.0
+offset_bottom = 170.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/Shoes" unique_id=2143972730]
+modulate = Color(100, 100, 100, 0.1)
+layout_mode = 2
+
+[node name="PlayersInventoryPanel" type="MarginContainer" parent="PlayersUI" unique_id=785498338 groups=["inventory"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="PlayersUI/PlayersInventoryPanel" unique_id=1232154810]
+layout_mode = 2
+columns = 6
+
+[node name="Slot" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1420264900 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot2" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1390898670 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot3" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1417989686 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot4" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1065485876 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot5" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1124464294 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot6" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=333025800 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot7" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=101633367 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot8" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=193803666 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot9" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1759407254 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot10" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=237159520 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot11" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=430238730 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot12" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1464786249 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="MoneyPanelContainer" type="PanelContainer" parent="PlayersUI" unique_id=1465083812]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MoneyPanel" type="Label" parent="PlayersUI/MoneyPanelContainer" unique_id=2011117727]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Money: 
+"
+label_settings = SubResource("LabelSettings_pydyk")
+
+[node name="ShopUI" type="TabContainer" parent="." unique_id=1966582418]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 116.0
+offset_top = 354.0
+offset_right = 156.0
+offset_bottom = 394.0
+current_tab = 0
+clip_tabs = false
+tabs_rearrange_group = 0
+tab_focus_mode = 0
+
+[node name="ShopBuyInventoryPanel" type="Control" parent="ShopUI" unique_id=1868092806 groups=["inventory"]]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="ShopUI/ShopBuyInventoryPanel" unique_id=2023074406]
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 132.0
+
+[node name="GridContainer" type="GridContainer" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer" unique_id=781830916]
+layout_mode = 2
+columns = 5
+
+[node name="Slot" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=607841019 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot2" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1029227294 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot3" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1621924574 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot4" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=309725511 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot5" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=907195471 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot6" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=2089854270 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot7" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=33742269 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot8" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1559440619 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot9" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=1593046719 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot10" parent="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer" unique_id=704477085 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="ShopSellInventoryPanel" type="Control" parent="ShopUI" unique_id=1535621888 groups=["inventory"]]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="ShopUI/ShopSellInventoryPanel" unique_id=71841242]
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 132.0
+
+[node name="ShopSoldGridContainer" type="GridContainer" parent="ShopUI/ShopSellInventoryPanel/PanelContainer" unique_id=1979394325]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 5
+
+[node name="Slot" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=525598669 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot2" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=1367386910 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot3" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=642012019 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot4" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=524220721 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot5" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=2076408867 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot6" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=495392039 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot7" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=202526582 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot8" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=84480331 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot9" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=835195383 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="Slot10" parent="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer" unique_id=1421545398 instance=ExtResource("3_rg73s")]
+layout_mode = 2
+
+[node name="GrabbedSlot" parent="." unique_id=682548893 instance=ExtResource("3_rg73s")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 480.0
+offset_top = 165.0
+offset_right = 544.0
+offset_bottom = 229.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" method="_on_gui_input"]
+[connection signal="mouse_entered" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" method="_on_mouse_exited"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Helmet" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="gui_input" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" method="_on_gui_input"]
+[connection signal="mouse_entered" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" to="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" method="_on_mouse_exited"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Necklace" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Necklace" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring2" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Ring2" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Chest" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Chest" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Weapon" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Weapon" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/MarginContainer/HBoxContainer/Legs" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/Shoes" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/EquipmentContainer/PlayerEquipmentPanel/Shoes" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot2" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot2" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot3" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot3" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot4" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot4" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot5" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot5" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot6" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot6" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot7" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot7" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot8" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot8" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot9" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot9" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot10" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot10" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot11" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot11" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot12" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot12" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot2" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot2" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot3" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot3" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot4" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot4" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot5" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot5" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot6" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot6" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot7" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot7" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot8" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot8" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot9" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot9" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot10" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot10" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot2" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot2" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot3" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot3" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot4" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot4" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot5" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot5" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot6" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot6" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot7" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot7" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot8" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot8" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot9" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot9" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot10" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="ShopUI/ShopSellInventoryPanel/PanelContainer/ShopSoldGridContainer/Slot10" to="." method="_on_slot_slot_panel_right_clicked"]
