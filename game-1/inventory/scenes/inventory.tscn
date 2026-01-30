@@ -457,6 +457,42 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
 position = Vector2(16, 16)
 texture = ExtResource("13_stspg")
 
+[node name="Slot13" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1273687738 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot13" unique_id=1655302174]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
+
+[node name="Slot14" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=778349205 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot14" unique_id=736585362]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
+
+[node name="Slot15" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=1823060835 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot15" unique_id=1726825519]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
+
+[node name="Slot16" parent="PlayersUI/PlayersInventoryPanel/GridContainer" unique_id=331225784 instance=ExtResource("3_rg73s")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_do1mn")
+
+[node name="IconFrame" type="Sprite2D" parent="PlayersUI/PlayersInventoryPanel/GridContainer/Slot16" unique_id=1528166076]
+position = Vector2(16, 16)
+texture = ExtResource("13_stspg")
+
 [node name="MoneyPanelContainer" type="MarginContainer" parent="PlayersUI" unique_id=1464687975]
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -665,6 +701,14 @@ texture = ExtResource("15_do1mn")
 [connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot11" to="." method="_on_slot_slot_panel_right_clicked"]
 [connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot12" to="." method="_on_slot_slot_panel_left_clicked"]
 [connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot12" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot13" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot13" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot14" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot14" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot15" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot15" to="." method="_on_slot_slot_panel_right_clicked"]
+[connection signal="slot_panel_left_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot16" to="." method="_on_slot_slot_panel_left_clicked"]
+[connection signal="slot_panel_right_clicked" from="PlayersUI/PlayersInventoryPanel/GridContainer/Slot16" to="." method="_on_slot_slot_panel_right_clicked"]
 [connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot" to="." method="_on_slot_slot_panel_left_clicked"]
 [connection signal="slot_panel_right_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot" to="." method="_on_slot_slot_panel_right_clicked"]
 [connection signal="slot_panel_left_clicked" from="ShopUI/ShopBuyInventoryPanel/PanelContainer/GridContainer/Slot2" to="." method="_on_slot_slot_panel_left_clicked"]

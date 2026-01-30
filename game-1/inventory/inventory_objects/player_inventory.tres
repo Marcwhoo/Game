@@ -14,5 +14,5 @@
 
 [resource]
 script = ExtResource("4_ifh53")
-items_in_inventory = Array[ExtResource("1_2ga54")]([ExtResource("2_0ka6l"), ExtResource("3_nef07"), ExtResource("4_ev6so"), ExtResource("5_eytuh"), ExtResource("6_v14b1"), ExtResource("7_wq4hn"), ExtResource("8_pl2i1"), ExtResource("9_sjtvh"), ExtResource("10_udp2o"), null, null, null])
+items_in_inventory = Array[ExtResource("1_2ga54")]([ExtResource("2_0ka6l"), ExtResource("3_nef07"), ExtResource("4_ev6so"), ExtResource("5_eytuh"), ExtResource("6_v14b1"), ExtResource("7_wq4hn"), ExtResource("8_pl2i1"), ExtResource("9_sjtvh"), ExtResource("10_udp2o"), null, null, null, null, null, null, null])
 inventory_name = "players_inventory"

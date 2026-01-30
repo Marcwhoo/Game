@@ -814,6 +814,18 @@ position = Vector2(12.000004, 273)
 rotation = 1.5707964
 texture = ExtResource("2_jbyw0")
 
+[node name="HealthbarTooltip" type="Label" parent="ui_slider_left/healthbar" unique_id=-1282621618]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -13.0
+offset_top = -26.0
+offset_right = 47.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "0/0"
+horizontal_alignment = 1
+
 [node name="ui_slider_right" type="Control" parent="." unique_id=102078735]
 anchors_preset = 0
 offset_left = 320.0
