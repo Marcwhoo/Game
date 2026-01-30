@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mb := event as InputEventMouseButton
 		if mb.button_index == MOUSE_BUTTON_LEFT and mb.pressed:
-			if _is_click_on_ui():
+			if _is_click_on_ui(mb.position):
 				return
 			var parent_2d := get_parent() as Node2D
 			if not parent_2d:
@@ -49,11 +49,14 @@ func _input(event: InputEvent) -> void:
 			if cell.x >= 0 and cell.x < cols and cell.y >= 0 and cell.y < rows:
 				cell_clicked.emit(cell)
 
-func _is_click_on_ui() -> bool:
-	var pos: Vector2 = get_global_mouse_position()
+func _is_click_on_ui(viewport_pos: Vector2) -> bool:
+	var vp := get_viewport()
+	var canvas_transform: Transform2D = vp.get_canvas_transform()
+	var canvas_pos := canvas_transform.affine_inverse() * viewport_pos
 	for node in get_tree().get_nodes_in_group("game_ui"):
 		if node is Control:
-			if (node as Control).get_global_rect().has_point(pos):
+			var ctrl: Control = node as Control
+			if ctrl.get_global_rect().has_point(canvas_pos):
 				return true
 	return false
 
